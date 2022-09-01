@@ -31,10 +31,17 @@ def choose():
 def main_page():
     if request.method == 'POST':
         if request.form['ch'] == 'teacher':
-            return redirect(url_for('teacher'))
+            return redirect(url_for('select_teacher'))
         elif request.form['ch'] == 'student':
-            return redirect(url_for('student'))
+            return redirect(url_for('select_student'))
     return render_template('main_page.html')
+
+@app.route('/t',methods=['POST','GET'])
+def select_teacher():
+    ls =db.subject.distinct('name')
+    print(ls[1])
+    return render_template('select_teacher.html',ls=ls)
+
 
 if __name__ == '__main__':
 	app.run(debug=True)
