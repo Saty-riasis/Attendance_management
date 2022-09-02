@@ -9,10 +9,16 @@
 <body>
     <form method="POST">
         <table>
-            <tr><td>Name</td><td><input type="text" name="name" ></td></tr>
+            <tr><td>Name</td><td>
+                <select name= name method="GET">
+                {% for j in student_ls %}
+                <option value= "{{j}}">{{j}}</option>"
+                {% endfor %}
+                </select>
+            </td></tr>
             <tr><td>Subject</td><td>
                 <select name= ch method="GET">
-                {% for i in ls %}
+                {% for i in subject_ls %}
                 <option value= "{{i}}">{{i}}</option>"
                 {% endfor %}
                 </select>

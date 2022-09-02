@@ -34,7 +34,7 @@ def main_page():
         if request.form['ch'] == 'teacher':
             return redirect(url_for('select_teacher'))
         elif request.form['ch'] == 'student':
-            return redirect(url_for('select_student'))
+            return redirect(url_for('student_ch'))
     return render_template('main_page.html')
 
 #list of students and subjects
@@ -50,10 +50,30 @@ def select_teacher():
     return render_template('select_teacher.html',ls=subject_ls)
 
 @app.route('/s',methods=['POST','GET'])
-def select_student():
+def student_ch():
     name = request.form.get('name')
-    subject = request.form.get('ch')
-    return render_template('select_student.html',ls=subject_ls)
+    sub = request.form.get('ch')
+    if(name != None and sub != None):
+        return redirect(url_for('student_opt',name=name,sub=sub))
+    return render_template('select_student.html',student_ls=student_ls,subject_ls=subject_ls)
+
+@app.route('/stu_opt/<name>/<sub>',methods=['POST','GET'])
+def student_opt(name,sub):
+    if request.method == 'POST':
+        if request.form['ch'] == 'opt1':
+            return redirect(url_for('student_option_1',name))
+        elif request.form['ch'] == 'opt2':
+            return redirect(url_for('student_option_2',name,sub))
+    return render_template('student_opt.html')
+    
+@app.route('/stu_ch_1/<name>',methods=['POST','GET'])
+def student_option_1(name):
+    return 0
+
+@app.route('/stu_ch_2/<name>/<sub>',methods=['POST','GET'])
+def student_option_2(name,sub):
+     return 0
+
 #to create a webpage with student_ls to take attd for today
 @app.route('/<sub>/',methods=['POST','GET'])
 def index(sub):
