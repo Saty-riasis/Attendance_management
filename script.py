@@ -61,18 +61,29 @@ def student_ch():
 def student_opt(name,sub):
     if request.method == 'POST':
         if request.form['ch'] == 'opt1':
-            return redirect(url_for('student_option_1',name))
+            return redirect(url_for('student_option_1',name=name))
         elif request.form['ch'] == 'opt2':
-            return redirect(url_for('student_option_2',name,sub))
+            return redirect(url_for('student_option_2',name=name,sub=sub))
     return render_template('student_opt.html')
     
 @app.route('/stu_ch_1/<name>',methods=['POST','GET'])
 def student_option_1(name):
-    return 0
-
+    ls=[]
+    for i in subject_ls:
+        sub_db = db[i]
+        for x in sub_db.find({'name':name,'date':str(time)},{'_id':0,'attd':1}):
+            ls.append(i+"-"+ x['attd'])
+    return render_template('stu_opt_1.html',ls=ls)
+    
 @app.route('/stu_ch_2/<name>/<sub>',methods=['POST','GET'])
 def student_option_2(name,sub):
-     return 0
+    sub_db=db[sub]
+    total_class=len(sub_db.distinct('date'))
+    attd_class=0
+    for x in sub_db.find({'name':name,'date':str(time)}):
+        attd_class+=1
+    perc=attd_class/total_class*100
+    return render_template('percentage.html',x=perc,sub=sub)
 
 #to create a webpage with student_ls to take attd for today
 @app.route('/<sub>/',methods=['POST','GET'])
