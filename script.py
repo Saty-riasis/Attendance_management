@@ -1,5 +1,6 @@
 from crypt import methods
 import datetime
+import re
 from flask import Flask,request,url_for,redirect,render_template
 from flask_pymongo import PyMongo
 from pymongo import MongoClient 
@@ -56,7 +57,8 @@ def index(sub):
     if request.method == 'POST':
         db_sub = db[sub]
         for i in student_ls:
-            db_sub.insert_one(({'name':i,'date':str(time),'attd':request.form['ch']}))         
+            db_sub.insert_one(({'name':i,'date':str(time),'attd':request.form['ch']})) 
+        return render_template('attd_success.html',subject= sub,date=str(time))            
     return render_template('attd.html',student_ls=student_ls) 
 
 if __name__ == '__main__':
