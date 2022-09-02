@@ -9,6 +9,12 @@ client = MongoClient(CONNECTION_STRING)
 db =client['attendance']
 
 app = Flask(__name__,template_folder ='templates')
+@app.after_request
+def after_request(response):
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate, public, max-age=0"
+    response.headers["Expires"] = '0'
+    response.headers["Pragma"] = "no-cache"
+    return response
 
 time =datetime.date.today()
 
@@ -80,7 +86,7 @@ def student_option_2(name,sub):
     sub_db=db[sub]
     total_class=len(sub_db.distinct('date'))
     attd_class=0
-    for x in sub_db.find({'name':name,'date':str(time)}):
+    for x in sub_db.distinct('name'):
         attd_class+=1
     perc=attd_class/total_class*100
     return render_template('percentage.html',x=perc,sub=sub)
