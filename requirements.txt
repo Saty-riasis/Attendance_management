@@ -1,3 +1,5 @@
 Flask
 pymongo[srv]
 Flask-Pymongo
+datetime
+gunicorn

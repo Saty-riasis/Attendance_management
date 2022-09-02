@@ -1,6 +1,4 @@
-from crypt import methods
 import datetime
-import re
 from flask import Flask,request,url_for,redirect,render_template
 from flask_pymongo import PyMongo
 from pymongo import MongoClient 
@@ -51,6 +49,11 @@ def select_teacher():
         return redirect(url_for('index',sub=value))
     return render_template('select_teacher.html',ls=subject_ls)
 
+@app.route('/s',methods=['POST','GET'])
+def select_student():
+    name = request.form.get('name')
+    subject = request.form.get('ch')
+    return render_template('select_student.html',ls=subject_ls)
 #to create a webpage with student_ls to take attd for today
 @app.route('/<sub>/',methods=['POST','GET'])
 def index(sub):
