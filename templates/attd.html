@@ -7,13 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="POST">
-        <select name= ch method="GET">
-            {% for i in ls %}
-            <option value= "{{i}}">{{i}}</option>"
+    <form method="post">
+        <table>
+            {% for i in student_ls %}
+            <tr><td>{{i}}</td><td><input type="checkbox" name="ch" value ="present"></td></tr>
             {% endfor %}
-        </select>
-        <input type="submit" value="Submit">
+            <input type="submit" value="Submit">
+        </table>
     </form>
 </body>
 </html>
