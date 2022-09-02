@@ -86,7 +86,7 @@ def student_option_2(name,sub):
     sub_db=db[sub]
     total_class=len(sub_db.distinct('date'))
     attd_class=0
-    for x in sub_db.distinct('name'):
+    for x in sub_db.find({'name':name}):
         attd_class+=1
     perc=attd_class/total_class*100
     return render_template('percentage.html',x=perc,sub=sub)
