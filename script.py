@@ -79,6 +79,8 @@ def student_option_1(name):
         sub_db = db[i]
         for x in sub_db.find({'name':name,'date':str(time)},{'_id':0,'attd':1}):
             ls.append(i+"-"+ x['attd'])
+        if len(ls) == 0:
+            ls.append("No class attended today")    
     return render_template('stu_opt_1.html',ls=ls)
     
 @app.route('/stu_ch_2/<name>/<sub>',methods=['POST','GET'])
@@ -96,8 +98,9 @@ def student_option_2(name,sub):
 def index(sub):
     if request.method == 'POST':
         db_sub = db[sub]
-        for i in student_ls:
-            db_sub.insert_one(({'name':i,'date':str(time),'attd':request.form['ch']})) 
+        ls = request.form.getlist('ch') 
+        for i in ls:
+            db_sub.insert_one(({'name':i,'date':str(time),'attd':'present'}))        
         return render_template('attd_success.html',subject= sub,date=str(time))            
     return render_template('attd.html',student_ls=student_ls) 
 
