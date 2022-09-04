@@ -5,15 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+<link rel="stylesheet" href="mystyle.css">
 </head>
 <body>
     <form method="post">
-        <table>
-            {% for i in student_ls %}
-            <tr><td>{{i}}</td><td><input type="checkbox" name="ch" value ="{{i}}"></td></tr>
-            {% endfor %}
+<img src="https://www.nfsu.ac.in/uploads/setting/1602849810_13b18cdf92ea104f5a89.png" width="150" height="50"><br><br><h1>NFSU ATTENDANCE B.TECH</h1>
+
+	<br><br><br><br>
+        <table align="center" bgcolor="#FFCFFC" >
+<tr><td style = "text-align:left">{% for i in student_ls %}{{i}}</td><td><input type="checkbox" name="ch" value ="{{i}}"></td></tr>
+            <tr><td colspan = "2">{% endfor %}</td></tr>
+<tr><td colspan ="2" style = "text-align:center"><input type="submit" value="Submit"></td></tr>
         </table>
-        <input type="submit" value="Submit">
+        
     </form>
 </body>
 </html>
