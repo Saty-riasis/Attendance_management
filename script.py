@@ -79,8 +79,8 @@ def student_option_1(name):
         sub_db = db[i]
         for x in sub_db.find({'name':name,'date':str(time)},{'_id':0,'attd':1}):
             ls.append(i+"-"+ x['attd'])
-        if len(ls) == 0:
-            ls.append("No class attended today")    
+    if len(ls) == 0:
+        ls.append("No class attended today")    
     return render_template('stu_opt_1.html',ls=ls)
     
 @app.route('/stu_ch_2/<name>/<sub>',methods=['POST','GET'])
@@ -106,3 +106,5 @@ def index(sub):
 
 if __name__ == '__main__':
 	app.run(debug=True)
+
+
