@@ -109,7 +109,7 @@ def student_option_2(name,sub):
         total_class=x['count']
     attd_class=0
     for x in sub_db.find({'name':name}):
-        attd_class+=1
+        attd_class+=1    
     perc=attd_class/int(total_class)*100
     return render_template('percentage.html',x=perc,sub=sub)
 
@@ -127,9 +127,10 @@ def index(sub):
 
 def update_total_count(sub):
     count_db=db["count"]
+    total=0
     for x in count_db.find({'name':sub},{'_id':0,'count':1}):
-        total_class=int(x['count'])
-    count_db.update_one({'name':sub},{"$set":{'count':str(total_class+1)}},upsert=False)
+        total=int(x['count'])
+    count_db.update_one({'name':sub},{"$set":{'count':str(total+1)}},upsert=False)
     
 if __name__ == '__main__':
 	app.run(debug=True)
