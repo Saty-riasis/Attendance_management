@@ -86,7 +86,8 @@ def student_option_1(name):
 @app.route('/stu_ch_2/<name>/<sub>',methods=['POST','GET'])
 def student_option_2(name,sub):
     sub_db=db[sub]
-    total_class=len(sub_db.distinct('date'))
+    count_db=db["count"]
+    total_class= count_db.find({'name':sub},{'_id':0,'count':1})
     attd_class=0
     for x in sub_db.find({'name':name}):
         attd_class+=1
