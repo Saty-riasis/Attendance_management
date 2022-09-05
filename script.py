@@ -38,14 +38,32 @@ def add():
 def main_page():
     if request.method == 'POST':
         if request.form['ch'] == 'teacher':
-            return redirect(url_for('select_teacher'))
+            return redirect(url_for('auth'))
         elif request.form['ch'] == 'student':
             return redirect(url_for('student_ch'))
     return render_template('main_page.html')
 
+
+@app.route('/auth',methods=['POST','GET'])
+def auth():
+    auth_db=db["auth"]
+    for x in auth_db.find({},{'_id':0,'pin':1}):
+        print(x['pin'])
+        pin_db=(x['pin'])
+    pin = request.form.get('pin')
+    if(pin == pin_db):
+        return redirect(url_for('select_teacher'))
+    return render_template('auth.html')
+
 #list of students and subjects
-subject_ls =db.subject.distinct('name')
-student_ls = db.student.distinct('name')
+subject_ls =[]
+student_ls = []
+
+for x in db.student.find({},{'_id':0,'name':1}):
+    student_ls.append(x['name'])
+
+for x in db.subject.find({},{'_id':0,'name':1}):
+    subject_ls.append(x['name'])
 
 #route to select teacher from subject_ls
 @app.route('/t',methods=['POST','GET'])
@@ -87,7 +105,8 @@ def student_option_1(name):
 def student_option_2(name,sub):
     sub_db=db[sub]
     count_db=db["count"]
-    total_class= count_db.find({'name':sub},{'_id':0,'count':1})
+    for x in count_db.find({'name':sub},{'_id':0,'count':1}):
+        total_class=x['count']
     attd_class=0
     for x in sub_db.find({'name':name}):
         attd_class+=1
@@ -102,9 +121,16 @@ def index(sub):
         ls = request.form.getlist('ch') 
         for i in ls:
             db_sub.insert_one(({'name':i,'date':str(time),'attd':'present'}))        
+        update_total_count(sub)
         return render_template('attd_success.html',subject= sub,date=str(time))            
     return render_template('attd.html',student_ls=student_ls) 
 
+def update_total_count(sub):
+    count_db=db["count"]
+    for x in count_db.find({'name':sub},{'_id':0,'count':1}):
+        total_class=int(x['count'])
+    count_db.update_one({'name':sub},{"$set":{'count':str(total_class+1)}},upsert=False)
+    
 if __name__ == '__main__':
 	app.run(debug=True)
 
