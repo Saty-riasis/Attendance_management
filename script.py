@@ -91,7 +91,7 @@ def student_option_2(name,sub):
     attd_class=0
     for x in sub_db.find({'name':name}):
         attd_class+=1
-    perc=attd_class/total_class*100
+    perc=attd_class/int(total_class)*100
     return render_template('percentage.html',x=perc,sub=sub)
 
 #to create a webpage with student_ls to take attd for today
