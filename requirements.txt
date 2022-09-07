@@ -3,3 +3,5 @@ pymongo[srv]
 Flask-Pymongo
 datetime
 gunicorn
+pandas
+numpy
