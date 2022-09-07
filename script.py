@@ -2,6 +2,8 @@ import datetime
 from flask import Flask,request,url_for,redirect,render_template
 from flask_pymongo import PyMongo
 from pymongo import MongoClient 
+import pandas as pd
+import numpy as np
 
 CONNECTION_STRING ="mongodb+srv://user:12345@attendance.kobg93v.mongodb.net/?retryWrites=true&w=majority"
 
@@ -131,7 +133,24 @@ def update_total_count(sub):
     for x in count_db.find({'name':sub},{'_id':0,'count':1}):
         total=int(x['count'])
     count_db.update_one({'name':sub},{"$set":{'count':str(total+1)}},upsert=False)
-    
+
+def data_to_pd(sub,date_start,date_end):
+    ls=[]
+    for x in db.Java.find({},{'_id':0,'name':1}):
+       ls.append(x['name']) 
+    date = []
+
+    for x in student_ls:
+        if x in ls:
+            date.append({'name':x,'%s'%(str(time)):"P"})
+        else :
+            date.append({'name':x,'%s'%(str(time)):"-"})    
+  
+    df = pd.DataFrame(date)
+    df.index = np.arange(1, len(df)+1)
+    print(df)
+    return "heelo"    
+
 if __name__ == '__main__':
 	app.run(debug=True)
 
