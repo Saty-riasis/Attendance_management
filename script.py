@@ -1,6 +1,7 @@
 from crypt import methods
 import datetime
 import re
+from tracemalloc import start
 from flask import Flask,request,url_for,redirect,render_template
 from flask_pymongo import PyMongo
 from pymongo import MongoClient 
@@ -84,12 +85,14 @@ def teacher_ch(sub=0):
         if request.form['ch'] == 'opt1':
             return redirect(url_for('index',sub=sub))
         elif request.form['ch'] == 'opt2':
-            return redirect(url_for('export_data'))
+            return redirect(url_for('export_data',sub=sub))
     return render_template('teacher_opt.html')
 
 @app.route('/export',methods=['POST','GET'])
-def export_data():
-    data_to_pd()
+def export_data(sub=0):
+    start = request.form.get('start')
+    end = request.form.get('end')
+    data_to_pd(start,end,sub)
     return render_template('export_data.html')
 
 @app.route('/s',methods=['POST','GET'])
@@ -151,23 +154,21 @@ def update_total_count(sub):
         total=int(x['count'])
     count_db.update_one({'name':sub},{"$set":{'count':str(total+1)}},upsert=False)
 
-def data_to_pd():
-    date_start=time
-    date_end=time + datetime.timedelta(days=5)
-    while (date_start!=date_end):
-        print(date_start)
-        date_start+= datetime.timedelta(days=1)
-    ls=[]
-    for x in db.Java.find({},{'_id':0,'name':1}):
-       ls.append(x['name'])    
-    data_for_date = []
-    for x in student_ls:
-        if x in ls:
-            data_for_date.append({'name':x,'%s'%(str(time)):"P"})
-        else :
-            data_for_date.append({'name':x,'%s'%(str(time)):"-"})    
+def data_to_pd(start,end,sub):
+    data = []
+    while (start!=end):
+        ls=[]
+        for x in db[sub].find({'date':str(start)},{'_id':0,'name':1}):
+            ls.append(x['name'])    
+        for x in student_ls:
+            if x in ls:
+                data.append({'name':x,'%s'%(str(start)):"P"})
+            else :
+                data.append({'name':x,'%s'%(str(start)):"-"})    
   
-    df = pd.DataFrame(data_for_date)
+        start+= datetime.timedelta(days=1)
+    
+    df = pd.DataFrame(data)
     df.index = np.arange(1, len(df)+1)
     print(df)
     return "heelo"    
