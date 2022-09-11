@@ -1,6 +1,5 @@
 from crypt import methods
 import datetime
-import re
 from tracemalloc import start
 from flask import Flask,request,url_for,redirect,render_template
 from flask_pymongo import PyMongo
@@ -79,8 +78,8 @@ def select_teacher():
         return redirect(url_for('teacher_ch',sub=value))
     return render_template('select_teacher.html',ls=subject_ls)
 
-@app.route('/teacher_opt',methods=['POST','GET'])
-def teacher_ch(sub=0):
+@app.route('/teacher_opt/<sub>/',methods=['POST','GET'])
+def teacher_ch(sub):
     if request.method == 'POST':
         if request.form['ch'] == 'opt1':
             return redirect(url_for('index',sub=sub))
@@ -88,11 +87,14 @@ def teacher_ch(sub=0):
             return redirect(url_for('export_data',sub=sub))
     return render_template('teacher_opt.html')
 
-@app.route('/export',methods=['POST','GET'])
-def export_data(sub=0):
-    start = request.form.get('start')
-    end = request.form.get('end')
-    data_to_pd(start,end,sub)
+@app.route('/export/<sub>/',methods=['POST','GET'])
+def export_data(sub):
+    print(sub)
+    if request.method == 'POST':
+        start = request.form.get('start')
+        end = request.form.get('end')
+        #print(type(time),type(start))
+        data_to_pd(start,end,sub)
     return render_template('export_data.html')
 
 @app.route('/s',methods=['POST','GET'])
@@ -155,18 +157,21 @@ def update_total_count(sub):
     count_db.update_one({'name':sub},{"$set":{'count':str(total+1)}},upsert=False)
 
 def data_to_pd(start,end,sub):
+    start_o=datetime.datetime.strptime(start, '%Y-%m-%d').date()
+    end_o=datetime.datetime.strptime(end, '%Y-%m-%d').date()
     data = []
     while (start!=end):
         ls=[]
-        for x in db[sub].find({'date':str(start)},{'_id':0,'name':1}):
+        data_entry = []
+        for x in db[sub].find({'date':str(start_o)},{'_id':0,'name':1}):
             ls.append(x['name'])    
         for x in student_ls:
             if x in ls:
-                data.append({'name':x,'%s'%(str(start)):"P"})
+                data_entry.append({'name':x,'%s'%(str(start_o)):"P"})
             else :
-                data.append({'name':x,'%s'%(str(start)):"-"})    
-  
-        start+= datetime.timedelta(days=1)
+                data_entry.append({'name':x,'%s'%(str(start_o)):"-"})    
+        data.append(data_entry)  
+        start_o+= datetime.timedelta(days=1)
     
     df = pd.DataFrame(data)
     df.index = np.arange(1, len(df)+1)
