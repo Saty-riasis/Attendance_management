@@ -93,8 +93,8 @@ def export_data(sub):
     if request.method == 'POST':
         start = request.form.get('start')
         end = request.form.get('end')
-        #print(type(time),type(start))
-        data_to_pd(start,end,sub)
+        df=data_to_pd(start=start,end=end,sub=sub)
+        return render_template('data.html', column_names=df.columns.values, row_data=list(df.values.tolist()), zip=zip)
     return render_template('export_data.html')
 
 @app.route('/s',methods=['POST','GET'])
@@ -159,25 +159,33 @@ def update_total_count(sub):
 def data_to_pd(start,end,sub):
     start_o=datetime.datetime.strptime(start, '%Y-%m-%d').date()
     end_o=datetime.datetime.strptime(end, '%Y-%m-%d').date()
+    file_name = 'AttdData.xlsx'
     data = []
-    while (start!=end):
+    data.append(student_ls)   
+    col_name = ['Name']
+    while (start_o!=end_o):
+        col_name.append(str(start_o))
         ls=[]
         data_entry = []
         for x in db[sub].find({'date':str(start_o)},{'_id':0,'name':1}):
             ls.append(x['name'])    
         for x in student_ls:
             if x in ls:
-                data_entry.append({'name':x,'%s'%(str(start_o)):"P"})
+                data_entry.append("P")
             else :
-                data_entry.append({'name':x,'%s'%(str(start_o)):"-"})    
+                data_entry.append("-")   
         data.append(data_entry)  
-        start_o+= datetime.timedelta(days=1)
-    
-    df = pd.DataFrame(data)
-    df.index = np.arange(1, len(df)+1)
-    print(df)
-    return "heelo"    
+        start_o = start_o + datetime.timedelta(days=1)
 
+    df = pd.DataFrame(data)
+    df=df.transpose()
+    index_ls=np.arange(1, len(df)+2,)
+    index_ls=np.delete(index_ls,7)
+    df.index = index_ls
+    df.columns=col_name
+    #df.to_excel(file_name)
+    print(df)
+    return df
 if __name__ == '__main__':
 	app.run(debug=True)
 
