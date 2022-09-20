@@ -1,0 +1,188 @@
+.course-header {
+  height: 150px;
+  width: 150px;
+  border-radius: 150px;
+  margin: auto;
+  line-height: 150px;
+  font-size: 2.5em;
+  background-color: rgb(255, 255, 255, 0.1);
+}
+
+.course-title {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.container-header {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.5em;
+  font-weight: 500;
+  padding-left: 65px;
+  text-align: left;
+}
+
+.container-header-social {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.5em;
+  font-weight: 500;
+  padding-right: 65px;
+  text-align: right;
+}
+
+.container-header-contact {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.5em;
+  font-weight: 500;
+  padding-right: 80px;
+  text-align: right;
+}
+
+.about-content {
+  font-size: 1.1em;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 100px;
+  border: transparent;
+  border-radius: 20px;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  margin-top: 5px;
+}
+
+.about-pad {
+  padding-left: 60px;
+}
+
+.xbot-link{
+  color: white;
+}
+
+.xbot-link:hover {
+  color: white;
+}
+
+.xbot-logo {
+  width: 35%;
+}
+
+.xbotics7 {
+  color: rgb(255, 255, 255);
+}
+
+.image-align {
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.socialmedia-link {
+  margin-top: 10px;
+  border: transparent;
+  border-radius: 10px;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  display: block;
+  max-width: 300px;
+  font-size: 1.2em;
+  padding: 20px;
+  margin-left: auto;
+}
+
+.socialmedia-link:hover {
+  text-decoration: none;
+  color: white;
+  transform: scale(1.05);
+}
+
+.social-link-div {
+  margin-right: 65px;
+}
+
+.row-margin {
+  margin-top: 10px;
+}
+
+.contact-margin {
+  margin-top: 50px;
+}
+
+.footer {
+  margin-top: 200px;
+  border: 1px solid black;
+}
+
+.sociall {
+  border: 1px solid black;
+}
+
+.link-align-center {
+  padding-top: 11px;
+  padding-left: 10px;
+}
+
+.made-love {
+  margin-top: 20px;
+  margin-right: 80px;
+  padding-bottom: 20px;
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.fixed-bottom {
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    margin-top: 10px;
+  }
+  .container-header {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2em;
+    font-weight: 500;
+    padding-left: 0px;
+    text-align: center;
+  }
+  .made-love {
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-bottom: 20px;
+    text-align: right;
+    justify-content: center;
+  }
+  .container-header-social {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5em;
+    font-weight: 500;
+    padding-right: 0px;
+    text-align: center;
+  }
+  .container-header-contact {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5em;
+    font-weight: 500;
+    padding-right: 0px;
+    text-align: center;
+  }
+  .socialmedia-link {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .social-link-div {
+    margin-right: 0px;
+  }
+  .about-content {}
+  .about-pad {
+    padding-left: 20px;
+  }
+  .fixed-bottom {
+    position: static !important;
+  }
+  .pos {
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

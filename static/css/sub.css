@@ -1,0 +1,151 @@
+body {
+    background-image: linear-gradient(to right, #578FA8, #152F41);
+    color: white;
+    /* background-image: url("images/pattern_bg.svg"); */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.subject-title {
+    font-weight: 600;
+}
+
+.subject {
+    text-decoration: none;
+    display: block;
+    color: white;
+    width: 100%;
+    max-width: 60%;
+    background-color: rgb(255, 255, 255, 10%);
+    border-top: 1px solid #ffffff1e;
+    padding: 30px;
+    text-align: center;
+    font-size: 1.4em;
+    transition: all .3s ease-out;
+}
+
+.subject:nth-child(3) {
+    margin-top: 25px;
+    border-radius: 10px 10px 0 0;
+    border-top: none;
+}
+
+.subject:last-child {
+    border-radius: 0 0 10px 10px;
+}
+
+.subject:hover {
+    text-decoration: none;
+    color: white;
+    background-color: rgb(255, 255, 255, 10%);
+    transform: scale(1.05);
+}
+
+.main-cont {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 62px);
+}
+
+.course-info {
+    margin-top: 20px;
+    display: flex;
+}
+
+.course-info>* {
+    font-size: 1.3em;
+}
+
+#sem-syllabus {
+    margin-top: -5px;
+    color: white;
+}
+
+#sem-syllabus:hover {
+    color: white;
+}
+
+.sub-img {
+    padding-bottom: 39%;
+    background: url(../images/sub5.svg);
+    background-size: cover;
+    margin-top: -30px;
+    margin-left: -70px;
+    opacity: 0.7;
+}
+
+.sem-drop {
+    margin-top: -5px;
+}
+
+#sem-title {
+    color: white;
+    text-decoration: none;
+    border: 1px rgb(21, 209, 209) solid;
+    border-radius: 5px;
+    padding: 5px 18px;
+    font-size: 0.8em;
+}
+
+#sem-title:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.sem-drop-menu {
+    padding: 0;
+    border: 0;
+}
+
+.sem-drop-menu .dropdown-item:nth-child(6) {
+    border: 0;
+}
+
+.sem-drop-menu .dropdown-item {
+    display: flex;
+    justify-content: center;
+    padding: 10px 60px;
+    border-bottom: 1px solid #ebebebb8;
+}
+
+/* Desktop CSS */
+
+@media (min-width: 768px) {
+    .main-cont {
+        min-height: auto;
+    }
+}
+
+/* Mobile CSS */
+
+@media (max-width: 768px) {
+    .subject-title {
+        text-align: center;
+        font-size: 1.7em;
+        margin-top: 20px;
+    }
+    .course-info {
+        justify-content: center;
+    }
+    .subject {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+    }
+    .sub-img {
+        padding-bottom: 75%;
+        margin-left: 0px;
+    }
+}
+
+@media all and (min-width: 992px) {
+    .sem-drop .dropdown-menu {
+        display: none;
+    }
+    .sem-drop:hover {}
+    .sem-drop:hover .dropdown-menu {
+        display: block;
+    }
+    .sem-drop .dropdown-menu {
+        margin-top: -5px;
+    }
+}

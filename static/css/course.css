@@ -1,0 +1,88 @@
+body {
+    /* background-image: linear-gradient(to right, #578FA8 , #152F41); */
+    color: white;
+    background-image: url("../images/pattern_bg.svg") !important;
+    font-family: 'Montserrat', sans-serif;
+    background-size: cover;
+    background-color: var(--main-bg2);
+    background-blend-mode: luminosity;
+}
+
+.course-header {
+    height: 150px;
+    width: 150px;
+    border-radius: 150px;
+    margin: auto;
+    line-height: 150px;
+    font-size: 2.5em;
+    background-color: rgb(255, 255, 255, 20%);
+    transition: all .3s ease-out;
+}
+
+.course-title {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.course-main-header {
+    text-align: center;
+    font-weight: 600;
+}
+
+.course {
+    text-decoration: none;
+    color: white;
+}
+
+.course:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.course:hover>.course-header {
+    background-color: rgb(255, 255, 255, 10%);
+    transform: scale(1.1);
+}
+
+.course-syllabus {
+    text-decoration: none;
+    display: block;
+    color: white;
+    width: 100%;
+    max-width: 70%;
+    background-color: rgb(255, 255, 255, 15%);
+    transition: all .3s ease-out;
+    height: 50px;
+    padding-top: 15px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.course-syllabus:hover {
+    text-decoration: none;
+    color: white;
+    background-color: rgb(255, 255, 255, 10%);
+    transform: scale(1.05);
+}
+
+.main-cont {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 62px);
+}
+
+/* Desktop CSS */
+
+@media (min-width: 768px) {
+    .main-cont {
+        min-height: auto;
+    }
+    .course-main-header {
+        text-align: left;
+    }
+}

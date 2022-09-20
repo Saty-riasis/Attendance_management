@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar-brand {
+    padding-left: 50px;
+}
+
+.navbar-nav>li {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.navbar-nav .active>.nav-link {
+    border: 1px rgb(21, 209, 209) solid;
+    border-radius: 5px;
+}
+
+.main_section {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+}
+
+.main-cont {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 62px);
+}
+
+.bg-col {
+    padding-bottom: 39%;
+    background: url(../images/semBg\ \(2\).svg);
+    background-size: cover;
+    margin-left: -60px;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.year {
+    font-weight: bold;
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+
+.buttonStyle {
+    background: rgba(243, 240, 240, 15%);
+    border: transparent;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 28px;
+    font-size: 1.2em;
+    transition: all .3s ease-out;
+}
+
+.buttonStyle:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 20px 2px #00000013;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.course-syllabus {
+    display: block;
+    color: white;
+    background-color: transparent;
+    margin-top: 20px;
+    font-size: 1.3em;
+    width: fit-content;
+}
+
+.course-syllabus:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+/* Desktop CSS */
+
+@media (min-width: 768px) {
+    .main-cont {
+        min-height: auto;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .bg-col {
+        padding-bottom: 70%;
+        background: url(../images/semBg\ \(2\).svg);
+        background-size: cover;
+        margin-left: 0;
+    }
+    h1 {
+        font-size: large;
+        font-weight: bold;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+    }
+    .btnPos {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .year {
+        font-weight: bold;
+        text-align: center;
+    }
+    #CourseName {
+        font-size: 1.7em;
+    }
+    .course-syllabus {
+        margin: 15px auto;
+    }
+}
