@@ -1,4 +1,6 @@
+from crypt import methods
 import datetime
+from tracemalloc import start
 from flask import Flask,request,url_for,redirect,render_template
 from flask_pymongo import PyMongo
 from pymongo import MongoClient 
@@ -11,6 +13,7 @@ client = MongoClient(CONNECTION_STRING)
 db =client['attendance']
 
 app = Flask(__name__,template_folder ='templates')
+
 @app.after_request
 def after_request(response):
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate, public, max-age=0"
@@ -72,8 +75,27 @@ for x in db.subject.find({},{'_id':0,'name':1}):
 def select_teacher():
     value = request.form.get('ch')
     if value !=None:
-        return redirect(url_for('index',sub=value))
+        return redirect(url_for('teacher_ch',sub=value))
     return render_template('select_teacher.html',ls=subject_ls)
+
+@app.route('/teacher_opt/<sub>/',methods=['POST','GET'])
+def teacher_ch(sub):
+    if request.method == 'POST':
+        if request.form['ch'] == 'opt1':
+            return redirect(url_for('index',sub=sub))
+        elif request.form['ch'] == 'opt2':
+            return redirect(url_for('export_data',sub=sub))
+    return render_template('teacher_opt.html')
+
+@app.route('/export/<sub>/',methods=['POST','GET'])
+def export_data(sub):
+    print(sub)
+    if request.method == 'POST':
+        start = request.form.get('start')
+        end = request.form.get('end')
+        df=data_to_pd(start=start,end=end,sub=sub)
+        return render_template('data.html', column_names=df.columns.values, row_data=list(df.values.tolist()), zip=zip)
+    return render_template('export_data.html')
 
 @app.route('/s',methods=['POST','GET'])
 def student_ch():
@@ -134,23 +156,36 @@ def update_total_count(sub):
         total=int(x['count'])
     count_db.update_one({'name':sub},{"$set":{'count':str(total+1)}},upsert=False)
 
-def data_to_pd(sub,date_start,date_end):
-    ls=[]
-    for x in db.Java.find({},{'_id':0,'name':1}):
-       ls.append(x['name']) 
-    date = []
+def data_to_pd(start,end,sub):
+    start_o=datetime.datetime.strptime(start, '%Y-%m-%d').date()
+    end_o=datetime.datetime.strptime(end, '%Y-%m-%d').date()
+    file_name = 'AttdData.xlsx'
+    data = []
+    data.append(student_ls)   
+    col_name = ['Name']
+    while (start_o!=end_o):
+        col_name.append(str(start_o))
+        ls=[]
+        data_entry = []
+        for x in db[sub].find({'date':str(start_o)},{'_id':0,'name':1}):
+            ls.append(x['name'])    
+        for x in student_ls:
+            if x in ls:
+                data_entry.append("P")
+            else :
+                data_entry.append("-")   
+        data.append(data_entry)  
+        start_o = start_o + datetime.timedelta(days=1)
 
-    for x in student_ls:
-        if x in ls:
-            date.append({'name':x,'%s'%(str(time)):"P"})
-        else :
-            date.append({'name':x,'%s'%(str(time)):"-"})    
-  
-    df = pd.DataFrame(date)
-    df.index = np.arange(1, len(df)+1)
+    df = pd.DataFrame(data)
+    df=df.transpose()
+    index_ls=np.arange(1, len(df)+2,)
+    index_ls=np.delete(index_ls,7)
+    df.index = index_ls
+    df.columns=col_name
+    #df.to_excel(file_name)
     print(df)
-    return "heelo"    
-
+    return df
 if __name__ == '__main__':
 	app.run(debug=True)
 
