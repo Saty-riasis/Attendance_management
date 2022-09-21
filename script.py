@@ -1,8 +1,5 @@
-from crypt import methods
 import datetime
-from tracemalloc import start
 from flask import Flask,request,url_for,redirect,render_template
-from flask_pymongo import PyMongo
 from pymongo import MongoClient 
 import pandas as pd
 import numpy as np
