@@ -199,18 +199,19 @@ def data_to_pd(start,end,sub):
     return df
 
 def excel_to_pd(file,sub):
-    df =pd.read_excel(file,index_col=0)
-    df.drop('Name', axis=1,inplace=True)    
+    df =pd.read_excel(file,index_col=0)  
     sub_db=db[sub]
-    print(df)
+    col_ls=[]
+    for x in df.columns:
+        if x not in sub_db.distinct('date'):
+            col_ls.append(x)
 
-   # for (colname,colval) in df.iteritems():
-    
-        
-        
-
-
-
+    for ind in df.index:
+        for col in df.columns:
+            if col in col_ls:
+                if df[col][ind] == 'P':
+                    sub_db.insert_one(({'name':df['Name'][ind],'date':col,'attd':'present'}))      
+                    
 if __name__ == '__main__':
 	app.run(debug=True)
 
