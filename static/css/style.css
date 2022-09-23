@@ -70,8 +70,9 @@ a {
 }
 
 #nomtes {
-    margin-top: -80px;
-    font-size: 6em;
+    margin-top: -120px;
+    margin-bottom: 30px;
+    font-size: 4em;
     font-weight: bold;
     text-align: center
 }
