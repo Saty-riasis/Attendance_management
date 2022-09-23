@@ -2,6 +2,7 @@ from crypt import methods
 import datetime
 from flask import Flask,request,url_for,redirect,render_template
 from pymongo import MongoClient 
+from werkzeug.utils import secure_filename
 import pandas as pd
 import numpy as np
 
@@ -147,6 +148,18 @@ def index(sub):
         return render_template('attd_success.html',subject= sub,date=str(time))            
     return render_template('attd.html',student_ls=student_ls) 
 
+
+@app.route('/upload',methods=['POST','GET'])
+def upload():
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            print('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        sub= request.form['ch']
+        excel_to_pd(file,sub)
+    return render_template('upload_excel.html',ls=subject_ls)
+
 def update_total_count(sub):
     count_db=db["count"]
     total=0
@@ -182,8 +195,22 @@ def data_to_pd(start,end,sub):
     df.index = index_ls
     df.columns=col_name
     #df.to_excel(file_name)
-    print(df)
+    #print(df)
     return df
+
+def excel_to_pd(file,sub):
+    df =pd.read_excel(file,index_col=0)
+    df.drop('Name', axis=1,inplace=True)    
+    sub_db=db[sub]
+    print(df)
+
+   # for (colname,colval) in df.iteritems():
+    
+        
+        
+
+
+
 if __name__ == '__main__':
 	app.run(debug=True)
 
