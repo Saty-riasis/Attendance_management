@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block body %}
+
+  <section class="main_section">
+    <div class="container-fluid main">
+      <div class="row" style="margin: 0">
+        <div class="col-md-6 bg-col order-md-2 come-in2"></div>
+
+        <div class="col-md-6 come-in2 d-flex align-items-center flex-column my-auto">
+  
+
+
+          <button class="btn mt-4" onclick=window.location.href="{{ url_for('auth') }}";>
+            <i class="fa fa-book pr-2" aria-hidden="true"></i> Teacher
+          </button>
+    
+          <button class="btn mt-4" onclick=window.location.href="{{ url_for('student_ch') }}";>
+            <i class="fa fa-graduation-cap pr-2" aria-hidden="true"></i> Student
+          </button>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

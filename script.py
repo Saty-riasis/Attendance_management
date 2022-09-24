@@ -1,4 +1,4 @@
-from crypt import methods
+# from crypt import methods
 import datetime
 from flask import Flask,request,url_for,redirect,render_template
 from pymongo import MongoClient 
@@ -37,7 +37,7 @@ def add():
         collection.insert_one({'name':request.form['name']})   
    return render_template('add.html')
 
-#main index page to select between teacher and 
+#main index page to select between teacher and student
 @app.route('/',methods=['POST','GET'])
 def main_page():
     if request.method == 'POST':
@@ -45,7 +45,7 @@ def main_page():
             return redirect(url_for('auth'))
         elif request.form['ch'] == 'student':
             return redirect(url_for('student_ch'))
-    return render_template('main_page.html')
+    return render_template('index.html')
 
 
 @app.route('/auth',methods=['POST','GET'])

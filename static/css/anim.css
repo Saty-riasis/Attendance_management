@@ -1,0 +1,14 @@
+.come-in2 {
+    transform: translateY(50px);
+    animation: come-in2 0.9s ease forwards;
+}
+
+.come-in2:nth-child(odd) {
+    animation-duration: 0.7s;
+}
+
+@keyframes come-in2 {
+    to {
+        transform: translateY(0);
+    }
+}

@@ -1,26 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"></head>
-</head>
-<body>
-    <form method="POST">
-<img src="https://www.nfsu.ac.in/uploads/setting/1602849810_13b18cdf92ea104f5a89.png" width="150" height="50"><br><br><h1>NFSU ATTENDANCE B.TECH</h1>
+{% extends "base.html" %}
+{% block body %}
 
-	<br><br><br><br>
-<table align="center" bgcolor="#FFCFFC">
-<tr><td >
-        <select name= ch method="GET">
-            {% for i in ls %}
-            <option value= "{{i}}">{{i}}</option>"
-            {% endfor %}
-        </select></td>
-        <td style = "text-align:center"><input type="submit" value="Submit"></td></tr>
-</table>
-    </form>
-</body>
-</html>
+<head>
+    <style>
+    
+    .button {
+    border: transparent;
+    padding: 15px;
+    font-size: 1em;
+    width: 100%;
+    max-width: 200px;
+    border-radius: 35px;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all .3s ease-out;
+    box-shadow: 0px 5px 20px 2px #00000017;
+    margin-top: 16px;
+    margin-inline: 27%;
+  }
+  
+  .button:hover{
+    transform: scale(1.07);
+  }
+
+    .opt {
+    font-size: 1.35em;
+    border-radius: 35px;
+    text-align: center;
+    border: transparent;
+    width: 100%;
+    box-shadow: 0px 5px 20px 2px #00000017;
+    margin: 10px;
+    height: 50px;
+    }
+
+    </style>
+</head>
+
+
+<section class="main_section">
+    <div class="container-fluid main">
+      <div class="row" style="margin: 0">
+        <div class="col-md-6 bg-col order-md-2 come-in2"></div>
+        
+        <div class="col-md-6 come-in2 d-flex align-items-center flex-column my-auto">
+            <br>
+            <div id="nomtes">Select Subject</div>
+          <br>
+
+          <form method="POST"> 
+                <select class="form-select form-select-lg opt" name=ch method="GET" aria-label=".form-select-lg example"> 
+                    {% for i in ls %}
+                    <option value= "{{i}}">{{i}}</option>"
+                    {% endfor %}
+                  </select>
+                  <input class="button" type="submit" value="Submit">
+            </form>
+ 
+
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

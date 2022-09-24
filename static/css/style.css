@@ -1,0 +1,253 @@
+.light {
+    --card-bg: #fff;
+    --main-bg1: #7cc0c0;
+    --main-bg2: #1e6f68;
+    --textColor: #000;
+    --textHoverColor: #7d7d7d;
+    --bt-bg: rgba(255, 255, 255, 0.541);
+}
+
+.dark {
+    --card-bg: #2b2b2b;
+    --main-bg1: #212529;
+    --main-bg2: #212529;
+    --textColor: white;
+    --textHoverColor: #b2b2b2;
+    --bt-bg: rgba(36, 36, 36, 0.541);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all .2s ease-out;
+}
+
+body {
+    background-image: linear-gradient(to right, var(--main-bg1), var(--main-bg2));
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+a {
+    cursor: pointer;
+}
+
+.navbar-brand {
+    padding-left: 50px;
+}
+
+.navbar-nav>li {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.main_section {
+    display: flex;
+    flex-flow: column nowrap;
+    min-height: auto;
+    flex: 1;
+}
+
+.main {
+    flex: 1;
+}
+
+.bg-col {
+    padding-bottom: 35%;
+    /* min-height:50vh;  */
+    background: url(../images/semBg\ \(2\).svg);
+    background-size: cover;
+    margin-left: -20px;
+}
+
+.navbar-nav .active>.nav-link {
+    border: 1px rgb(21, 209, 209) solid;
+    border-radius: 5px;
+}
+
+#nomtes {
+    margin-top: -120px;
+    margin-bottom: 30px;
+    font-size: 4em;
+    font-weight: bold;
+    text-align: center
+}
+
+#innertext {
+    margin-top: -15px;
+}
+
+.btn {
+    border: transparent;
+    padding: 25px;
+    font-size: 1.5em;
+    width: 100%;
+    max-width: 280px;
+    border: transparent;
+    border-radius: 50px;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all .3s ease-out;
+    box-shadow: 0px 5px 20px 2px #00000017;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    color: rgb(139, 105, 202);
+}
+
+.btnAndroid {
+    border: transparent;
+    width: 280px;
+    padding: 20px;
+    border: transparent;
+    border-radius: 50px;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 5px 20px 2px #00000017;
+    transition: all .3s ease-out;
+}
+
+.btnAndroid:hover {
+    color: var(--textHoverColor);
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+.bi {
+    margin: auto;
+}
+
+.btn-theme {
+    text-decoration: none;
+    font-size: 1.2em;
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
+    margin-left: 8px;
+    border-radius: 40px;
+    background-color: var(--card-bg);
+    color: var(--textColor);
+}
+
+.btn-theme:hover {
+    color: var(--textColor);
+    transform: scale(1.05);
+}
+
+.social-icon {
+    font-size: 1.2em;
+    color: white;
+    margin-top: 20px;
+    text-decoration: none;
+    transition: all .3s ease-out;
+}
+
+.social-icon>i, .social-icon>img {
+    transition: all .3s ease-out;
+}
+
+.social-icon:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.social-icon:hover>i, .social-icon:hover>img {
+    transform: scale(1.2);
+}
+
+.social-parent {
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.come-in {
+    transform: translateY(150px);
+    animation: come-in 0.7s ease forwards;
+}
+
+.come-in:nth-child(odd) {
+    animation-duration: 0.5s;
+}
+
+@media all and (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu {
+        display: none;
+    }
+    .navbar .nav-item:hover .nav-link {}
+    .navbar .nav-item:hover .dropdown-menu {
+        display: block;
+    }
+    .navbar .nav-item .dropdown-menu {
+        margin-top: -5px;
+    }
+}
+
+@keyframes come-in {
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Mobile CSS */
+
+@media only screen and (max-width: 768px) {
+    .bg-col {
+        padding-bottom: 70%;
+        background: url(../images/semBg\ \(2\).svg);
+        background-size: cover;
+        margin-left: 0;
+    }
+    .navbar-brand {
+        display: block;
+        margin-left: auto;
+        font-weight: 600;
+        padding-left: 0px;
+    }
+    .main_section {
+        display: flex;
+        flex-direction: column;
+        min-height: 90vh;
+    }
+    .pos {
+        margin-top: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .nomtes_icon {
+        height: 150px;
+        margin-bottom: 30px;
+        margin-top: -20px;
+    }
+    #nomtes {
+        /* margin-top: 150px ; */
+        font-size: 4em;
+        font-weight: bold;
+        text-align: center
+    }
+    .fixed-bottom {
+        position: static !important;
+    }
+    body {
+        background-image: linear-gradient( var(--main-bg1), var(--main-bg2));
+    }
+}
+
+/* Desktop CSS */
+
+@media (min-width: 768px) {
+    .social-parent {
+        margin-right: 0px;
+        position: absolute;
+        top: calc(50vh - 58px);
+        right: 0;
+    }
+    .icons {
+        display: block !important;
+    }
+}
