@@ -9,14 +9,16 @@
         <div class="col-md-6 come-in2 d-flex align-items-center flex-column my-auto">
   
 
-
-          <button class="btn mt-4" onclick=window.location.href="{{ url_for('auth') }}";>
+          <form method="post">
+          <button class="btn mt-4" name="ch" value ="teacher" onclick="this.value.submit()"; >
             <i class="fa fa-book pr-2" aria-hidden="true"></i> Teacher
           </button>
     
-          <button class="btn mt-4" onclick=window.location.href="{{ url_for('student_ch') }}";>
+          <button class="btn mt-4" name="ch" value ="student" onclick="this.value.submit()"; >
             <i class="fa fa-graduation-cap pr-2" aria-hidden="true"></i> Student
           </button>
+          </form>
+
         </div>
       </div>
     </div>
