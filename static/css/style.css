@@ -198,7 +198,7 @@ a {
 
 @media only screen and (max-width: 768px) {
     .bg-col {
-        padding-bottom: 70%;
+        padding-bottom: 72%;
         background: url(../images/semBg\ \(2\).svg);
         background-size: cover;
         margin-left: 0;
@@ -225,7 +225,8 @@ a {
         margin-top: -20px;
     }
     #nomtes {
-        /* margin-top: 150px ; */
+        margin-top: -60px;
+        margin-bottom: -40px;
         font-size: 4em;
         font-weight: bold;
         text-align: center
