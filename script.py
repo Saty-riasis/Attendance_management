@@ -83,7 +83,15 @@ def teacher_ch(sub):
         if request.form['ch'] == 'opt1':
             return redirect(url_for('index',sub=sub))
         elif request.form['ch'] == 'opt2':
-            return redirect(url_for('export_data',sub=sub))
+            return redirect(url_for())
+        elif request.form['ch'] == 'opt3':
+            return redirect(url_for('export_data',sub=sub)) 
+        elif request.form['ch'] == 'opt4':
+            return redirect(url_for())
+        elif request.form['ch'] == '5':
+            return redirect(url_for())  
+        elif request.form['ch'] == 'opt6':
+            return redirect(url_for())             
     return render_template('teacher_opt.html')
 
 @app.route('/export/<sub>/',methods=['POST','GET'])
