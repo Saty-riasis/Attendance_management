@@ -4,7 +4,7 @@
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8" />
-  <title>Attendance - NFSU</title>
+  <title>{% block title %} Attendance {% endblock %} - NFSU</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <meta content="Tech" name="keywords" />
   <meta content="Attendance - NFSU " name="description" />
@@ -36,7 +36,7 @@
 </head>
 <style>
   body {
-    min-height: 100vh;
+    min-height: auto;
     display: flex;
     flex-flow: column nowrap;
   }

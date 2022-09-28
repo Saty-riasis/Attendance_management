@@ -77,6 +77,22 @@ a {
     text-align: center
 }
 
+#txt {
+    margin-top: -120px;
+    margin-bottom: 30px;
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center
+}
+
+#txt1 {
+    margin-top: -120px;
+    margin-bottom: 30px;
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center
+}
+
 #innertext {
     margin-top: -15px;
 }
@@ -212,7 +228,7 @@ a {
     .main_section {
         display: flex;
         flex-direction: column;
-        min-height: 90vh;
+        min-height: auto;
     }
     .pos {
         margin-top: auto;
@@ -231,6 +247,23 @@ a {
         font-weight: bold;
         text-align: center
     }
+
+    #txt {
+        margin-top: 20px;
+        margin-bottom: -40px;
+        font-size: 3em;
+        font-weight: bold;
+        text-align: center
+    }
+
+    #txt1 {
+        margin-top: -25px;
+        margin-bottom: -10px;
+        font-size: 3em;
+        font-weight: bold;
+        text-align: center
+    }
+
     .fixed-bottom {
         position: static !important;
     }
