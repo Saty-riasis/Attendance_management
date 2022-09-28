@@ -1,42 +1,62 @@
 {% extends "base.html" %}
 {% block body %}
 
+<head>
+  <style>
+    .button {
+      border: transparent;
+      padding: 15px;
+      font-size: 1em;
+      width: 100%;
+      max-width: 200px;
+      border-radius: 35px;
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      transition: all .3s ease-out;
+      box-shadow: 0px 5px 20px 2px #00000017;
+      margin-top: 16px;
+      margin-inline: 27%;
+    }
+  </style>
+</head>
 
-<form method = "POST">  
-        
-    </form> 
 
-    <section class="main_section">
-        <div class="container-fluid main">
-          <div class="row" style="margin: 0">
-            <div class="col-md-6 bg-col order-md-2 come-in2"></div>
-    
-            <div class="col-md-6 come-in2 d-flex align-items-center flex-column my-auto">
-    
-              <form method="post" class="col d-flex align-items-center flex-column">
-                
-                <button class="btn btn-primary mt-4" name="ch" value ="opt1" onclick="this.value.submit()"; >
-                    <i class="pr-2" aria-hidden="true"></i> Take Attendance for Today 
-                  </button>
-                
-                  <div class="dropdown-center">
-                    <button class="btn btn-secondary mt-4 dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      More Options
-                    </button>
+<section class="main_section">
+  <div class="container-fluid main">
+    <div class="row" style="margin: 0">
+      <div class="col-md-6 bg-col order-md-2 come-in2"></div>
 
-                    <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item btn-primary" name="ch" value ="opt2" onclick="this.value.submit()";>Take Attendance</button>
-                      <button class="dropdown-item btn-primary" name="ch" value ="opt3" onclick="this.value.submit()";>Export Data to XLS</button>
-                      <button class="dropdown-item btn-primary" name="ch" value ="opt4" onclick="this.value.submit()";>Import Data from XLS</button>
-                      <button class=" dropdown-item btn-primary disabled" name="ch" value ="opt6" onclick="this.value.submit()";> Scan Using Camera <span class="badge badge-light">Soon</span>
-                       </button>
-                    </div>
-                  </div>
+      <div class="col-md-6 come-in2 d-flex align-items-center flex-column my-auto">
 
-              </form>
-    
+        <form method="post" class="col d-flex align-items-center flex-column">
+
+          <button class="btn  btn mt-4" name="ch" value="opt1" onclick="this.value.submit()" ;>
+            <i class="pr-2" aria-hidden="true"></i> Take Attendance for Today
+          </button>
+
+          <div class="dropdown-center">
+            <button class="btn btn-secondary mt-4 dropdown-toggle" type="button" id="dropdownMenu2"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              More Options
+            </button>
+
+            <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item btn-primary" name="ch" value="opt2" onclick="this.value.submit()" ;>Take
+                Attendance</button>
+              <button class="dropdown-item btn-primary" name="ch" value="opt3" onclick="this.value.submit()" ;>Export
+                Data to XLS</button>
+              <button class="dropdown-item btn-primary" name="ch" value="opt4" onclick="this.value.submit()" ;>Import
+                Data from XLS</button>
+              <button class=" dropdown-item btn-primary disabled" name="ch" value="opt6" onclick="this.value.submit()"
+                ;> Scan Using Camera <span class="badge badge-light">Soon</span>
+              </button>
             </div>
           </div>
-        </div>
 
-{%endblock%}
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  {%endblock%}
