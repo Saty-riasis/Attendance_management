@@ -1,40 +1,38 @@
 {% extends "base.html" %}
 {% block body %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"></head>
-</head>
-<body>
-    <form method="POST">
-<img src="https://www.nfsu.ac.in/uploads/setting/1602849810_13b18cdf92ea104f5a89.png" width="150" height="50"><br><br><h1>NFSU ATTENDANCE B.TECH</h1>
+    
 
-	<br><br><br><br>
-        <table align="center" bgcolor="#FFCFFC">
-            <tr><td><b>Name</b></td><td style = "text-align:center">
-                <select name= name method="GET">
-                {% for j in student_ls %}
-                <option value= "{{j}}">{{j}}</option>"
-                {% endfor %}
-                </select>
-            </td></tr>
-            <tr><td><b>Subject</b></td><td style = "text-align:center">
-                <select name= ch method="GET">
-                {% for i in subject_ls %}
-                <option value= "{{i}}">{{i}}</option>"
-                {% endfor %}
-                </select>
-            </td></tr>
-	<tr><td colspan="2" style = "text-align:center"><input type="submit" value="Submit"></td></tr>
-        </table>
-        
-    </form>
-</body>
-</html>
-
+    <section class="main_section">
+        <div class="container-fluid main">
+          <div class="row" style="margin: 0">
+            <div class="col-md-6 bg-col order-md-2 come-in2"></div>
+    
+            <div class="col-md-6 come-in2 d-flex align-items-center flex-column my-auto">
+    
+              <form method="post" class="col d-flex align-items-center flex-column">
+                <table>
+                    <tr><td><b>Name</b></td><td style = "text-align:center">
+                        <select name= name method="GET">
+                        {% for j in student_ls %}
+                        <option value= "{{j}}">{{j}}</option>"
+                        {% endfor %}
+                        </select>
+                    </td></tr>
+                    <tr><td  style= "margin-top: 1500px;"><b>Subject</b></td><td style = "text-align:center; ">
+                        <select class="mt-2" name= ch method="GET">
+                        {% for i in subject_ls %}
+                        <option value= "{{i}}">{{i}}</option>"
+                        {% endfor %}
+                        </select>
+                    </td></tr>
+            <tr><td colspan="2" style = "text-align:center"><input type="submit" value="Submit" class="mt-2 btn-lg btn-outline-dark"></td></tr>
+                </table>
+                
+              </form>
+    
+            </div>
+          </div>
+        </div>
+    
 {% endblock %}
