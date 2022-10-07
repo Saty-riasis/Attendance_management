@@ -1,57 +1,6 @@
 {% extends "base.html" %}
 {% block body %}
 
-
-<head>
-  <style>
-  .button {
-    border: transparent;
-    padding: 15px;
-    font-size: 1em;
-    width: 100%;
-    max-width: 150px;
-    border: transparent;
-    border-radius: 35px;
-    color: white;
-    background: rgba(255, 255, 255, 0.1);
-    transition: all .3s ease-out;
-    box-shadow: 0px 5px 20px 2px #00000017;
-    margin: 10px;
-    
-  }
-  
-  .button:hover{
-    transform: scale(1.07);
-  }
-
-  .button span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.3s;
-  }
-  
-  .button span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.3s;
-  }
-  
-  .button:hover span {
-    padding-right: 25px;
-  }
-  
-  .button:hover span:after {
-    opacity: 1;
-    right: 0;
-  }
-  </style>
-  </head>
-
-
     <section class="main_section">
       <div class="container-fluid main">
         <div class="row" style="margin: 0">
@@ -61,7 +10,7 @@
           <div class="col-md-6 come-in2 d-flex align-items-center flex-column my-auto">
 
             <br><br><br>
-            <div id="nomtes">Login</div>
+            <div id="attd">Login</div>
             <br><br>
             <!-- <div class="container-fluid"> -->
               <form method="post">

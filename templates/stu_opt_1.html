@@ -1,26 +1,25 @@
 {% extends "base.html" %}
 {% block body %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"></head>
-</head>
-<body>
-<img src="https://www.nfsu.ac.in/uploads/setting/1602849810_13b18cdf92ea104f5a89.png" width="150" height="50"><br><br><h1>NFSU ATTENDANCE B.TECH</h1>
 
-	<br><br><br><br>
-    <table>
-<tr><td>
-        {% for i in ls %}</td></Tr>
-        <tr><td>{{i}}</td></tr>
-        <tr><td>{% endfor %}</td></tr>
-    </table>
-</body>
-</html>
+   
+
+    <section class="main_section">
+        <div class="container-fluid main">
+          <div class="row" style="margin: 0">
+    
+            <div class="col-md-12 come-in2 d-flex align-items-center flex-column my-auto">
+    
+                <table class="mt-4 table table-sm txt table-striped table-bordered btn-table" style="color: white; width: fit-content;";>
+                    
+                            {% for i in ls %}
+                            <tr><td>{{i}}</td></tr>
+                            {% endfor %}
+                        </table>
+    
+            </div>
+          </div>
+        </div>
+
 
 {% endblock %}

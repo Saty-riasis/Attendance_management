@@ -1,23 +1,18 @@
 {% extends "base.html" %}
 {% block body %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"></head>
-</head>
-<body>
-<img src="https://www.nfsu.ac.in/uploads/setting/1602849810_13b18cdf92ea104f5a89.png" width="150" height="50"><br><br><h1>NFSU ATTENDANCE B.TECH</h1>
+        
 
-	<br><br><br><br>
-        <table align="center" bgcolor="#FFCFFC">
-   <tr><td style = "text-align:center"> You have taken attendnce for <b><u>{{subject}}</u></b> for <b><u>{{date}}</u></b> </td></tr>
+
+<section class="main_section">
+    <div class="container-fluid main">
+        <table>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
+                <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+              </svg>
+              <p class="txt "> You have taken attendnce for <b>{{subject}}</b> for <b>{{date}}</b></p>
+   <tr><td style = "text-align:center">  </td></tr>
 </table>
-</body>
-</html>
-
+    </div>
 {% endblock %}

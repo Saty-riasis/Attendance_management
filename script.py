@@ -127,7 +127,7 @@ def student_option_1(name):
     for i in subject_ls:
         sub_db = db[i]
         for x in sub_db.find({'name':name,'date':str(time)},{'_id':0,'attd':1}):
-            ls.append(i+"-"+ x['attd'])
+            ls.append(i+" - "+ x['attd'])
     if len(ls) == 0:
         ls.append("No class attended today")    
     return render_template('stu_opt_1.html',ls=ls)

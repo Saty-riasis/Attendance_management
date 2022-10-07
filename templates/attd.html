@@ -1,28 +1,33 @@
 {% extends "base.html" %}
-{% block title %} Attendance{% endblock %}
 {% block body %}
-
 <head>
-    <style>
-        .txt{
-            color: white;
+  <style>
+    body {
+      min-height: auto;
+      display: flex;
+      flex-flow: column nowrap;
+    }
+  
+    .txt{
+        color: white;
+        }
+  
+    .cb{
+        align-items: center;
+        height: 20px;
+        width: 90px;
+        margin-right : -15px;
+        margin-left: -15px;
         }
 
-        .cb{
-            align-items: center;
-            height: 20px;
-            width: 90px;
-            margin-right : -15px;
-            margin-left: -15px;
+  </style>
 
-        }
-    </style>
 </head>
 
-<section class="main_section">
+  <section class="main_section">
     <div class="container-fluid main">
         <div class="row" style="margin: 0">
-            <div class="col-md-6 order-md-2 come-in2"></div>
+            <div class="col-md-6 d-flex align-items-center flex-column  new-bg-col order-md-2 "></div>
 
 
             <div class="col-md-6 come-in2 d-flex align-items-center flex-column my-auto">
@@ -60,4 +65,5 @@
         </div>
     </div>
 
-    {%endblock%}
+
+{% endblock %}

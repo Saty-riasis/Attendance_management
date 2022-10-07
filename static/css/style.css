@@ -64,12 +64,97 @@ a {
     margin-left: -20px;
 }
 
+.new-bg-col {
+    
+    /* min-height:50vh;  */
+    /* margin-right: 360px; */
+    background: url(../images/semBg\ \(2\).svg);
+    background-size: 40%;
+    /* margin-left: -150px; */
+    /* background-attachment: fixed;
+    background-repeat: no-repeat; */
+    /* position: sticky; */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+    margin-bottom: -129px;
+    padding-top: 200px;
+    
+}
+
+svg {
+    width: 100px;
+    display: block;
+    margin: 40px auto 0;
+  }
+  .path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+  }
+  .path.circle {
+    -webkit-animation: dash 0.9s ease-in-out;
+    animation: dash 0.9s ease-in-out;
+  }
+  .path.line {
+    stroke-dashoffset: 1000;
+    -webkit-animation: dash 0.9s 0.35s ease-in-out forwards;
+    animation: dash 0.9s 0.35s ease-in-out forwards;
+  }
+  .path.check {
+    stroke-dashoffset: -100;
+    -webkit-animation: dash-check 0.9s 0.35s ease-in-out forwards;
+    animation: dash-check 0.9s 0.35s ease-in-out forwards;
+  }
+  p {
+    text-align: center;
+    margin: 20px 0 60px;
+    font-size: 1.25em;
+  }
+  p.success {
+    color: #73af55;
+  }
+  p.error {
+    color: #d06079;
+  }
+  @-webkit-keyframes dash {
+    0% {
+      stroke-dashoffset: 1000;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes dash {
+    0% {
+      stroke-dashoffset: 1000;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  @-webkit-keyframes dash-check {
+    0% {
+      stroke-dashoffset: -100;
+    }
+    100% {
+      stroke-dashoffset: 900;
+    }
+  }
+  @keyframes dash-check {
+    0% {
+      stroke-dashoffset: -100;
+    }
+    100% {
+      stroke-dashoffset: 900;
+    }
+  }
+
 .navbar-nav .active>.nav-link {
     border: 1px rgb(21, 209, 209) solid;
     border-radius: 5px;
 }
 
-#nomtes {
+#attd {
     margin-top: -120px;
     margin-bottom: 30px;
     font-size: 4em;
@@ -116,6 +201,25 @@ a {
     color: rgb(139, 105, 202);
 }
 
+.btn1 {
+    border: transparent;
+    padding: 20px;
+    font-size: 1.2em;
+    width: 100%;
+    max-width: 380px;
+    border: transparent;
+    border-radius: 30px;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all .3s ease-out;
+    box-shadow: 0px 5px 20px 2px #00000017;
+}
+
+.btn1:hover {
+    transform: scale(1.05);
+    color: rgb(139, 105, 202);
+}
+
 .btnAndroid {
     border: transparent;
     width: 280px;
@@ -154,6 +258,82 @@ a {
     color: var(--textColor);
     transform: scale(1.05);
 }
+
+.button {
+    border: transparent;
+    padding: 15px;
+    font-size: 1em;
+    width: 100%;
+    max-width: 150px;
+    border: transparent;
+    border-radius: 35px;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all .3s ease-out;
+    box-shadow: 0px 5px 20px 2px #00000017;
+    margin: 10px;
+    
+  }
+  
+  .button:hover{
+    transform: scale(1.07);
+  }
+
+
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.3s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.3s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+  .button_st {
+    border: transparent;
+    padding: 15px;
+    font-size: 1em;
+    width: 100%;
+    max-width: 200px;
+    border-radius: 35px;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all .3s ease-out;
+    box-shadow: 0px 5px 20px 2px #00000017;
+    margin-top: 16px;
+    margin-inline: 27%;
+  }
+
+  .button_st:hover {
+    transform: scale(1.07);
+  }
+
+  .opt {
+    font-size: 1.35em;
+    border-radius: 35px;
+    text-align: center;
+    border: transparent;
+    width: 100%;
+    box-shadow: 0px 5px 20px 2px #00000017;
+    margin: 10px;
+    height: 50px;
+  }
 
 .social-icon {
     font-size: 1.2em;
@@ -218,6 +398,10 @@ a {
         background: url(../images/semBg\ \(2\).svg);
         background-size: cover;
         margin-left: 0;
+    }
+    .new-bg-col{
+        margin: -100px;
+        background: url();
     }
     .navbar-brand {
         display: block;
