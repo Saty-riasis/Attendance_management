@@ -64,6 +64,24 @@ a {
     margin-left: -20px;
 }
 
+.new-bg-col {
+    
+    /* min-height:50vh;  */
+    /* margin-right: 360px; */
+    background: url(../images/semBg\ \(2\).svg);
+    background-size: 40%;
+    /* margin-left: -150px; */
+    /* background-attachment: fixed;
+    background-repeat: no-repeat; */
+    /* position: sticky; */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+    margin-bottom: -129px;
+    padding-top: 200px;
+    
+}
+
 .navbar-nav .active>.nav-link {
     border: 1px rgb(21, 209, 209) solid;
     border-radius: 5px;
