@@ -7,15 +7,14 @@
     <section class="main_section">
         <div class="container-fluid main">
           <div class="row" style="margin: 0">
-            <div class="col-md-6 order-md-2 come-in2"></div>
     
-            <div class="col-md-6 come-in2 d-flex align-items-center flex-column my-auto">
+            <div class="col-md-12 come-in2 d-flex align-items-center flex-column my-auto">
     
-                <table class="mt-4">
-                    <tr><td>
-                            {% for i in ls %}</td></Tr>
+                <table class="mt-4 table table-sm txt table-striped table-bordered btn-table" style="color: white; width: fit-content;";>
+                    
+                            {% for i in ls %}
                             <tr><td>{{i}}</td></tr>
-                            <tr><td>{% endfor %}</td></tr>
+                            {% endfor %}
                         </table>
     
             </div>

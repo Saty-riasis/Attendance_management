@@ -1,41 +1,6 @@
 {% extends "base.html" %}
 {% block body %}
 
-<head>
-  <style>
-    .button {
-      border: transparent;
-      padding: 15px;
-      font-size: 1em;
-      width: 100%;
-      max-width: 200px;
-      border-radius: 35px;
-      color: white;
-      background: rgba(255, 255, 255, 0.1);
-      transition: all .3s ease-out;
-      box-shadow: 0px 5px 20px 2px #00000017;
-      margin-top: 16px;
-      margin-inline: 27%;
-    }
-
-    .button:hover {
-      transform: scale(1.07);
-    }
-
-    .opt {
-      font-size: 1.35em;
-      border-radius: 35px;
-      text-align: center;
-      border: transparent;
-      width: 100%;
-      box-shadow: 0px 5px 20px 2px #00000017;
-      margin: 10px;
-      height: 50px;
-    }
-  </style>
-</head>
-
-
 <section class="main_section">
   <div class="container-fluid main">
     <div class="row" style="margin: 0">
@@ -52,12 +17,12 @@
             <option value="{{i}}">{{i}}</option>"
             {% endfor %}
           </select>
-          <input class="button" type="submit" value="Submit">
+          <input class="button_st " type="submit" value="Submit">
         </form>
 
 
       </div>
     </div>
   </div>
-
+ 
   {% endblock %}
