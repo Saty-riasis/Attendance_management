@@ -11,8 +11,8 @@
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://attd-server.onrender.com/" />
 
-  <link href="static\images\favicon.ico" rel="icon">
-  <link href="static\images\apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon" rel="icon">
+  <link href="{{ url_for('static', filename='images/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
   <!--google font-->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
